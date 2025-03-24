@@ -21,4 +21,5 @@ jobs:
 
       - name: Push
         run: dotnet nuget push DevArt.API/DevArt.API.${env:NBGV_NuGetPackageVersion}.nupkg -s "github" -k ${{ secrets.GITHUB_TOKEN }}
-        
+  
+  
