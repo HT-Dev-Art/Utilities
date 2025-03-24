@@ -4,6 +4,10 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Authors>Dev Art</Authors>
+        <Description>Core components for API projects</Description>
+        <Copyright>Dev Art</Copyright>
+        <PackageTags>Utilities api nuget</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
