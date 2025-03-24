@@ -400,4 +400,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 #JetBrains IDE configuration folder
-.idea/*
+**/.idea
