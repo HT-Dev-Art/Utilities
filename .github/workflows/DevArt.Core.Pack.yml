@@ -1,0 +1,24 @@
+name: Create DevArt.Core NuGet package
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish_nuget_package:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          dotnet tool restore
+          dotnet restore DevArt.Core/DevArt.Core.csproj
+
+      - name: Pack
+        run: dotnet pack DevArt.Core/DevArt.Core.csproj --no-restore -c Release
+
+      - name: Push
+        run: dotnet nuget push DevArt.Core/bin/Release/DevArt.Core.csproj.${env:NBGV_NuGetPackageVersion}.nupkg -s "github" -k ${{ secrets.GITHUB_TOKEN }}
+        
