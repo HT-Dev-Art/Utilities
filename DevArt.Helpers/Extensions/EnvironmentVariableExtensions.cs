@@ -7,8 +7,7 @@ public static class EnvironmentVariableExtensions
 {
     public static void AddFlatConfigurations<TConfig>(
         this IConfiguration configuration,
-        IDictionary arguments
-    ) where TConfig : class
+        IDictionary arguments) where TConfig : class
     {
         var configType = typeof(TConfig);
         var sectionName = configType.Name;
