@@ -35,4 +35,9 @@ public class AuthenticatedUser
     public string Id { get; }
 
     public bool IsValid { get; }
+
+    public bool HasPermission(string requestedId)
+    {
+        return Id == requestedId;
+    }
 }
