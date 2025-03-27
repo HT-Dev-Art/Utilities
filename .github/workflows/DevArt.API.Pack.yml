@@ -1,7 +1,10 @@
 name: Create DevArt.API NuGet package
 
 on:
-  workflow_dispatch:      
+  workflow_dispatch:
+  push:
+    branches:
+      - 'CORE-10-fix-pipeline-does-not-work-correctly'
 
 jobs:
   publish_nuget_package:
