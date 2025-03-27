@@ -2,10 +2,7 @@ name: Create DevArt.API NuGet package
 
 on:
   workflow_dispatch:      
-    inputs:
-      environment:
-        description: "test"
-        type: boolean
+
 jobs:
   publish_nuget_package:
     runs-on: windows-latest
