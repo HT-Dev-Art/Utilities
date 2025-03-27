@@ -1,0 +1,24 @@
+name: Create DevArt.Helpers NuGet package
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish_nuget_package:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          dotnet tool restore
+          dotnet restore DevArt.Helpers/DevArt.Helpers.csproj
+
+      - name: Pack
+        run: dotnet pack DevArt.Helpers/DevArt.Helpers.csproj --no-restore -c Release
+
+      - name: Push
+        run: dotnet nuget push DevArt.Helpers/bin/Release/DevArt.Helpers.${env:NBGV_NuGetPackageVersion}.nupkg -s "github" -k ${{ secrets.GITHUB_TOKEN }}
+        
