@@ -2,6 +2,9 @@ name: Create DevArt.Core NuGet package
 
 on:
   workflow_dispatch:
+  push: 
+    branches:
+      - 'CORE-11-fix-pipeline-for-core-project'
 
 jobs:
   publish_nuget_package:
@@ -23,5 +26,5 @@ jobs:
         run: dotnet pack DevArt.Core/DevArt.Core.csproj --no-restore -c Release
 
       - name: Push
-        run: dotnet nuget push DevArt.Core/bin/Release/DevArt.Core.csproj.${env:NBGV_NuGetPackageVersion}.nupkg -s "github" -k ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push DevArt.Core/bin/Release/DevArt.Core.${env:NBGV_NuGetPackageVersion}.nupkg -s "github" -k ${{ secrets.GITHUB_TOKEN }}
         
