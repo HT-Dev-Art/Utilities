@@ -2,9 +2,6 @@ name: Create DevArt.Core NuGet package
 
 on:
   workflow_dispatch:
-  push: 
-    branches:
-      - 'CORE-11-fix-pipeline-for-core-project'
 
 jobs:
   publish_nuget_package:
