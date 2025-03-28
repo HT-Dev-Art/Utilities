@@ -1,11 +1,14 @@
 name: Create DevArt.API NuGet package
 
 on:
-  workflow_dispatch:      
-    
+  workflow_dispatch:
+
 jobs:
   publish_nuget_package:
     runs-on: windows-latest
+    permissions:
+      packages: write
+      
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,9 +20,9 @@ jobs:
           dotnet restore DevArt.API/DevArt.API.csproj
 
       - name: Pack
-        run: dotnet pack DevArt.API/DevArt.API.csproj.csproj --no-restore -c Release
+        run: dotnet pack DevArt.API/DevArt.API.csproj --no-restore -c Release
 
       - name: Push
-        run: dotnet nuget push DevArt.API/DevArt.API.${env:NBGV_NuGetPackageVersion}.nupkg -s "github" -k ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push DevArt.API/bin/Release/DevArt.API.${env:NBGV_NuGetPackageVersion}.nupkg -s "github" -k ${{ secrets.GITHUB_TOKEN }}
   
   
